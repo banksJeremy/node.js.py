@@ -5,7 +5,7 @@ This module acts as a bridge to node.js and npm.
 
 `Node(dependencies, version, path, npm_version, daemonic)` will start a process (all parameters optional). It will locally install and compile node.js and dependencies using [nodeenv](https://github.com/ekalinin/nodeenv).
 
-The `Node` instance acts as a bridge to node's global namespace.
+The processes communicate over HTTP using [JSON-RPC 1.0](http://json-rpc.org/wiki/specification). A `Node` instance acts as a bridge to the node process's global namespace.
 
     node = Node(["coffee-script==1.0.1"], "0.4.8")
     
@@ -25,3 +25,5 @@ The bridge maps `Object`s to `NodeProxyObject`s and Functions to `NodeProxyFunct
 `NodeProxyObject`s implement `__copy__` and `__deepcopy__` to create local copies of the remote objects.
 
 Python callables can be passed to node.js as well! It's swell!
+
+Python 2.6+ will be supported, but I won't be testing on Python 3 yet.

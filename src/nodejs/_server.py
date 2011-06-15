@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.6
 import random
+import json
 
 try:
     from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
@@ -7,7 +8,22 @@ except ImportError:
     from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class Handler(BaseHTTPRequestHandler):
-    pass
+    def do_POST(self):
+        try:
+            data = json.load(rfile)
+            
+            result = {
+                "result": data
+            }
+        except Exception as e:
+            result = {
+                "error": type(e).__name__,
+                "message": str(e)
+            }
+        
+        self.send_response(200)
+        self.end_headers()
+        json.dump(result, wfile)
 
 class Server(HTTPServer):
     def __init__(self, address=None, handler=None):
@@ -16,6 +32,3 @@ class Server(HTTPServer):
         
         HTTPServer.__init__(self, self.address, handler or Handler)
 
-server = Server()
-print server.port
-server.serve_forever()
