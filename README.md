@@ -26,4 +26,6 @@ The bridge maps `Object`s to `NodeProxyObject`s and Functions to `NodeProxyFunct
 
 Python callables can be passed to node.js, but they will execute asynchronously and return nothing. Define a parameter with a default value of `nodejs.THIS` to receive JavaScript's `this` value.
 
+In node.js a `python` object will be defined, with the async methods `exec` and `eval`.
+
 Python 2.6+ will be supported, but I won't be testing on Python 3 yet.

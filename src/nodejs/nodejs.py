@@ -72,6 +72,12 @@ class Node(object):
         self.thread.start()
     
     def _spawn_node_process(self):
-        self.process = None
+        self.process = subprocess.Popen([os.path.join(self.path, "bin", "node"),
+                                         os.path.join(os.path.dirname(__file__), "server.js"),
+                                         13456])
+    
+    def eval(self, s):
+        request_code = 
+        
         
     
