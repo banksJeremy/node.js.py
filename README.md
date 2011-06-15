@@ -24,6 +24,6 @@ The bridge maps `Object`s to `NodeProxyObject`s and Functions to `NodeProxyFunct
 
 `NodeProxyObject`s implement `__copy__` and `__deepcopy__` to create local copies of the remote objects.
 
-Python callables can be passed to node.js as well! It's swell!
+Python callables can be passed to node.js as well! It's swell! Added a keyword argument with the default value `nodejs.THIS` to access the JavaScript `this`. Ex. `lamba self=nodejs.THIS: None`
 
 Python 2.6+ will be supported, but I won't be testing on Python 3 yet.
